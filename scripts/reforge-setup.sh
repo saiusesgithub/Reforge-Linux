@@ -3,6 +3,9 @@
 set -e
 
 PROJECT_NAME="Reforge Linux"
+SCRIPT_PATH="$(readlink -f "$0")"
+SCRIPT_DIR="$(cd "$(dirname "$SCRIPT_PATH")" && pwd)"
+ROOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 
 show_header() {
   clear
@@ -18,9 +21,9 @@ show_menu() {
   echo
   echo "What do you want this old PC to become?"
   echo
-  echo "1) Student Dev Machine"
-  echo "2) File Server / NAS Lite"
-  echo "3) Homelab Starter"
+  echo "1) File Server / NAS Lite"
+  echo "2) Ad-Blocking DNS Server"
+  echo "3) Media Server"
   echo "4) System Info"
   echo "5) Exit"
   echo
@@ -45,13 +48,13 @@ show_system_info() {
 run_profile() {
   case "$1" in
     1)
-      bash profiles/file-server/install.sh
+      bash "$ROOT_DIR/profiles/file-server/install.sh"
       ;;
     2)
-      bash profiles/ad-blocking-dns/install.sh
+      bash "$ROOT_DIR/profiles/ad-blocking-dns/install.sh"
       ;;
     3)
-      bash profiles/media-server/install.sh
+      bash "$ROOT_DIR/profiles/media-server/install.sh"
       ;;
     *)
       echo "Invalid profile."

@@ -39,11 +39,12 @@ usermod -aG "$SHARE_GROUP" "$TARGET_USER"
 
 log "Creating shared folder at $SHARE_DIR"
 mkdir -p "$SHARE_DIR"
-chown -R "$TARGET_USER:$SHARE_GROUP" "$SHARE_DIR"
-chmod -R 2775 "$SHARE_DIR"
+chown "$TARGET_USER:$SHARE_GROUP" "$SHARE_DIR"
+chmod 2775 "$SHARE_DIR"
 
-log "Creating a welcome file"
-cat > "$SHARE_DIR/README.txt" <<EOF
+log "Creating a welcome file if needed"
+if [[ ! -e "$SHARE_DIR/README.txt" ]]; then
+  cat > "$SHARE_DIR/README.txt" <<EOF
 Welcome to Reforge Linux File Server.
 
 This folder is shared on your local network using Samba.
@@ -54,6 +55,9 @@ $SHARE_NAME
 Local path:
 $SHARE_DIR
 EOF
+  chown "$TARGET_USER:$SHARE_GROUP" "$SHARE_DIR/README.txt"
+  chmod 0664 "$SHARE_DIR/README.txt"
+fi
 
 log "Backing up Samba configuration"
 if [[ ! -f "$BACKUP_CONF" ]]; then
@@ -106,7 +110,11 @@ echo "You need to set a Samba password for user: $TARGET_USER"
 echo "This can be the same as your Linux password, or a different one."
 echo
 
-smbpasswd -a "$TARGET_USER"
+if pdbedit -L 2>/dev/null | cut -d: -f1 | grep -qx "$TARGET_USER"; then
+  echo "Samba user '$TARGET_USER' already exists; leaving password unchanged."
+else
+  smbpasswd -a "$TARGET_USER"
+fi
 
 IP_ADDRESS="$(hostname -I | awk '{print $1}')"
 
