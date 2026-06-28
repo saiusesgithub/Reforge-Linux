@@ -75,6 +75,16 @@ print_preinstall_warning() {
   echo
 }
 
+print_installer_guidance() {
+  echo
+  echo "Pi-hole installer guidance"
+  echo "--------------------------"
+  echo "When Pi-hole shows 'Static IP Needed', select 'Continue'."
+  echo "Do not press Enter blindly if 'Exit' is selected."
+  echo "For real use, router DHCP reservation/static IP is recommended."
+  echo
+}
+
 check_port_with_ss() {
   local port="$1"
   local protocol="$2"
@@ -161,10 +171,29 @@ allow_ufw_ports() {
 
 run_pihole_status() {
   if command -v pihole >/dev/null 2>&1; then
-    pihole status || warn "Pi-hole status command was unavailable or returned a non-zero status."
+    if command -v sudo >/dev/null 2>&1; then
+      sudo pihole status || warn "Pi-hole status command was unavailable or returned a non-zero status."
+    else
+      pihole status || warn "Pi-hole status command was unavailable or returned a non-zero status."
+    fi
   else
     warn "Pi-hole command was not found after installation."
   fi
+}
+
+update_pihole_gravity() {
+  if ! command -v pihole >/dev/null 2>&1; then
+    warn "Skipping gravity update because the Pi-hole command was not found."
+    return 0
+  fi
+
+  log "Updating Pi-hole gravity"
+  if ! pihole -g; then
+    warn "Pi-hole gravity update failed. Review the command output above."
+  fi
+
+  log "Restarting Pi-hole FTL service"
+  systemctl restart pihole-FTL || warn "Could not restart pihole-FTL. Review the command output above."
 }
 
 print_completion() {
@@ -219,11 +248,14 @@ main() {
   log "Cloning official Pi-hole installer"
   git clone --depth 1 "$PIHOLE_REPO_URL" "$PIHOLE_DIR"
 
+  print_installer_guidance
+
   log "Running official Pi-hole installer"
   if ! bash "$PIHOLE_DIR/automated install/basic-install.sh"; then
     error_exit "Pi-hole installer failed. Review the installer output above and try again."
   fi
 
+  update_pihole_gravity
   allow_ufw_ports
 
   log "Checking Pi-hole status"
