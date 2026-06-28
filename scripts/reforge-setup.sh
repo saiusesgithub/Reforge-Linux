@@ -45,13 +45,13 @@ show_system_info() {
 run_profile() {
   case "$1" in
     1)
-      bash profiles/dev-machine/install.sh
-      ;;
-    2)
       bash profiles/file-server/install.sh
       ;;
+    2)
+      bash profiles/ad-blocking-dns/install.sh
+      ;;
     3)
-      bash profiles/homelab-starter/install.sh
+      bash profiles/media-server/install.sh
       ;;
     *)
       echo "Invalid profile."
