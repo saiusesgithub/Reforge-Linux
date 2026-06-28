@@ -153,8 +153,12 @@ detect_jellyfin_repo() {
   local repo_family=""
 
   case "$distro_id" in
-    debian|mx)
+    debian)
       repo_family="debian"
+      ;;
+    mx)
+      repo_family="debian"
+      codename="${DEBIAN_CODENAME:-}"
       ;;
     ubuntu)
       repo_family="ubuntu"
@@ -165,7 +169,7 @@ detect_jellyfin_repo() {
   esac
 
   if [[ -z "$codename" ]]; then
-    error_exit "Could not detect VERSION_CODENAME from /etc/os-release. Refusing to guess Jellyfin repository suite."
+    error_exit "Could not detect a supported Debian/Ubuntu codename from /etc/os-release. Refusing to guess Jellyfin repository suite."
   fi
 
   echo "$repo_family $codename"

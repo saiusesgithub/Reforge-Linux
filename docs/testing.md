@@ -1,3 +1,22 @@
+## File Server Profile Test
+
+Environment:
+
+- OS:
+- Machine:
+- Date:
+
+Checks:
+
+- Setup Center launched successfully
+- Samba installed successfully
+- Shared folder created at `/srv/reforge/share`
+- Samba config backup created
+- Re-running profile does not duplicate the Reforge Samba block
+- Windows access path printed
+- Linux access path printed
+- Existing share contents were not deleted
+
 ## Ad-Blocking DNS Server Profile Test
 
 Environment:

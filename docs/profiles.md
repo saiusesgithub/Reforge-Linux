@@ -1,3 +1,23 @@
+## File Server
+
+Purpose:
+Turns an old PC into a simple local network file server using Samba.
+
+What it does:
+
+- Installs Samba
+- Creates a shared folder at `/srv/reforge/share`
+- Adds a Reforge Samba share configuration
+- Shows Windows and Linux access paths
+- Keeps a backup of the original Samba configuration
+
+Important notes:
+
+- The share is intended for trusted local networks
+- A Samba password is required for access
+- Existing files in the share folder are not deleted
+- You may need to log out and back in for group permissions to apply
+
 ## Ad-Blocking DNS Server
 
 Purpose:
