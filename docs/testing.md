@@ -1,21 +1,25 @@
 ## File Server Profile Test
 
 Environment:
-
-- OS:
-- Machine:
-- Date:
+- OS: MX Linux 25.2 XFCE x64
+- Machine: VirtualBox VM
+- Host OS: Windows
+- Date: 2026-06-28
 
 Checks:
+- Setup Center launched successfully: Passed
+- Samba installed successfully: Passed
+- ReforgeShare created: Passed
+- Windows access worked: Passed
+- Mapped share as Z: drive: Passed
+- File creation from Windows worked: Passed
+- Re-running profile did not duplicate Samba config: Passed
 
-- Setup Center launched successfully
-- Samba installed successfully
-- Shared folder created at `/srv/reforge/share`
-- Samba config backup created
-- Re-running profile does not duplicate the Reforge Samba block
-- Windows access path printed
-- Linux access path printed
-- Existing share contents were not deleted
+Windows access path:
+\\192.168.0.6\ReforgeShare
+
+Windows mapped drive:
+Z:
 
 ## Ad-Blocking DNS Server Profile Test
 
