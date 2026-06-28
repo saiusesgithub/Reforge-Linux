@@ -43,18 +43,22 @@ Checks:
 ## Media Server Profile Test
 
 Environment:
-
-- OS:
-- Machine:
-- Date:
+- OS: MX Linux 25.2 XFCE x64
+- Machine: VirtualBox VM
+- Host OS: Windows
+- Date: 2026-06-28
 
 Checks:
+- Setup Center launched successfully: Passed
+- Jellyfin installer completed successfully: Passed
+- Media folders created: Passed
+- Jellyfin service started: Passed
+- Jellyfin listening on port 8096: Passed
+- Dashboard URL opened from Windows: Passed
+- First-time setup wizard appeared: Passed
+- Movies library visible: Passed
+- Shows library visible: Passed
+- Re-running profile detects existing Jellyfin:
 
-- Setup Center launched successfully
-- Jellyfin installer completed successfully
-- Media folders created
-- Jellyfin service started
-- Dashboard URL opened from another device
-- First-time setup wizard appeared
-- Media library path was added successfully
-- Re-running profile detects existing Jellyfin
+Jellyfin URL:
+http://192.168.0.6:8096
