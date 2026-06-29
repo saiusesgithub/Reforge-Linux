@@ -55,6 +55,12 @@ Instead, ISO files should be uploaded to GitHub Releases. Each ISO release shoul
 - Launcher shortcut
 - Lightweight MX/XFCE base
 
+## Setup Center Launcher
+
+The script `scripts/install-reforge-launcher.sh` installs a desktop launcher and application menu entry for Reforge Setup Center on XFCE/MX Linux.
+
+It creates `~/.local/share/applications/reforge-setup.desktop` and, when the user's Desktop folder exists, `~/Desktop/reforge-setup.desktop`.
+
 ## Things Not Included Yet
 
 - No custom package repository yet
