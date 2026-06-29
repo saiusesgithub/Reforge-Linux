@@ -61,6 +61,14 @@ The script `scripts/install-reforge-launcher.sh` installs a desktop launcher and
 
 It creates `~/.local/share/applications/reforge-setup.desktop` and, when the user's Desktop folder exists, `~/Desktop/reforge-setup.desktop`.
 
+## System Install Script
+
+The script `scripts/install-reforge-system.sh` copies Reforge Linux files to `/opt/reforge-linux`, creates the `reforge-setup` command in `/usr/local/bin`, and installs an application launcher at `/usr/share/applications/reforge-setup.desktop`.
+
+This script should be run before generating an MX Snapshot ISO so the installed system includes Reforge Setup Center, profiles, documentation, branding files, and the launcher entry.
+
+The launcher currently uses `xfce4-terminal`, which is expected on the MX Linux XFCE base.
+
 ## Things Not Included Yet
 
 - No custom package repository yet
