@@ -69,6 +69,14 @@ This script should be run before generating an MX Snapshot ISO so the installed 
 
 The launcher currently uses `xfce4-terminal`, which is expected on the MX Linux XFCE base.
 
+## Branding Install Script
+
+Run `sudo bash scripts/install-reforge-branding.sh` before MX Snapshot to install Reforge Linux branding assets into system locations.
+
+The wallpaper should be stored at `branding/wallpapers/reforge-wallpaper.png`. When present, the script copies it to `/usr/share/backgrounds/reforge-linux/reforge-wallpaper.png` and attempts to set it as the XFCE wallpaper for the current desktop user.
+
+This prepares the wallpaper for the custom ISO. If automatic XFCE wallpaper setup does not apply cleanly, set the wallpaper manually from XFCE Desktop Settings before generating the snapshot.
+
 ## Things Not Included Yet
 
 - No custom package repository yet

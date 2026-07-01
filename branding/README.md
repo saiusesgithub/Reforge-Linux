@@ -38,6 +38,12 @@ The brand should feel practical, lightweight, and open-source. It should communi
 - `Reforge Linux` text as the main focus
 - Tagline placement below or near the project name: `Old hardware. New purpose.`
 
+## Wallpaper Asset Requirements
+
+- Expected filename: `branding/wallpapers/reforge-wallpaper.png`
+- Recommended resolution: 1920x1080
+- Visual direction: dark, forge/spark/rebuild, old hardware revival
+
 ## Screenshot Checklist
 
 - [ ] Setup Center main menu
