@@ -48,6 +48,15 @@ The brand should feel practical, lightweight, and open-source. It should communi
 - [ ] MX VM desktop
 - [ ] Future custom ISO boot screen
 
+## v0.4 Branding Checklist
+
+- [ ] Wallpaper
+- [ ] Logo placeholder
+- [ ] Setup Center screenshot
+- [ ] Pi-hole screenshot
+- [ ] Jellyfin screenshot
+- [ ] Samba screenshot
+
 ## Asset Folder Structure
 
 ```text

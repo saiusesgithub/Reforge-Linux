@@ -11,6 +11,14 @@
 - [ ] `reforge-setup` command works
 - [ ] Desktop/application launcher works
 
+## ISO Readiness Verification
+
+- [ ] `/opt/reforge-linux` exists
+- [ ] `/usr/local/bin/reforge-setup` exists and is executable
+- [ ] `/usr/share/applications/reforge-setup.desktop` exists
+- [ ] Reforge Setup Center opens from the application menu
+- [ ] Reforge Setup Center opens from the terminal with `reforge-setup`
+
 ## Commands to Run Before Snapshot
 
 ```bash
